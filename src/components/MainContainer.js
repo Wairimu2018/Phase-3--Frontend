@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-// import { MEALS } from "../data";
-// import Hero from "./Hero";
+import { MEALS } from "../data";
+import Hero from "./Hero";
 // import DisplayFood from "./DisplayFood";
-// import Coupons from "./Coupons";
+import Coupons from "./Coupons";
 
 class App extends Component {
   state = {
-    // mealDisplay: "",
+    mealDisplay: "",
     newFood: "",
     chooseMeal: "Breakfast",
     foods: [],
@@ -17,118 +17,114 @@ class App extends Component {
     snackState: false,
     dessertState: false,
   };
-  
 
   componentDidMount() {
     fetch("http://localhost:9292/foods")
       .then((res) => res.json())
       .then((data) =>
         this.setState({
-        foods: data.foods
+          foods: data.foods,
         })
       );
-      console.log(this.state.foods)
-      }
+  }
 
-
-  // handleClick = (e) => {
+  handleClick = (e) => {
     //   console.log(e.target.innerText)
     // e.target.innerText === "All"
     // ? this.setState({ mealDisplay: "" })
     // : this.setState({ mealDisplay: e.target.innerText });
 
-    // if (e.target.innerText === "All") {
-    //   this.setState({
-    //     mealDisplay: "",
-    //     allState: true,
-    //     breakfastState: false,
-    //     lunchState: false,
-    //     dinnerState: false,
-    //     snackState: false,
-    //     dessertState: false,
-    //   });
-    //   console.log("All");
-    // }
+    if (e.target.innerText === "All") {
+      this.setState({
+        mealDisplay: "",
+        allState: true,
+        breakfastState: false,
+        lunchState: false,
+        dinnerState: false,
+        snackState: false,
+        dessertState: false,
+      });
+      console.log("All");
+    }
 
-    // if (e.target.innerText === "Breakfast") {
-    //   this.setState({
-    //     mealDisplay: e.target.innerText,
-    //     allState: false,
-    //     breakfastState: true,
-    //     lunchState: false,
-    //     dinnerState: false,
-    //     snackState: false,
-    //     dessertState: false,
-    //   });
-    //   console.log("Breakfast");
-    // }
+    if (e.target.innerText === "Breakfast") {
+      this.setState({
+        mealDisplay: e.target.innerText,
+        allState: false,
+        breakfastState: true,
+        lunchState: false,
+        dinnerState: false,
+        snackState: false,
+        dessertState: false,
+      });
+      console.log("Breakfast");
+    }
 
-    // if (e.target.innerText === "Lunch") {
-    //   this.setState({
-    //     mealDisplay: e.target.innerText,
-    //     allState: false,
-    //     breakfastState: false,
-    //     lunchState: true,
-    //     dinnerState: false,
-    //     snackState: false,
-    //     dessertState: false,
-    //   });
-    //   console.log("Lunch");
-    // }
+    if (e.target.innerText === "Lunch") {
+      this.setState({
+        mealDisplay: e.target.innerText,
+        allState: false,
+        breakfastState: false,
+        lunchState: true,
+        dinnerState: false,
+        snackState: false,
+        dessertState: false,
+      });
+      console.log("Lunch");
+    }
 
-  //   if (e.target.innerText === "Dinner") {
-  //     this.setState({
-  //       mealDisplay: e.target.innerText,
-  //       allState: false,
-  //       breakfastState: false,
-  //       lunchState: false,
-  //       dinnerState: true,
-  //       snackState: false,
-  //       dessertState: false,
-  //     });
-  //     console.log("Dinner");
-  //   }
+    if (e.target.innerText === "Dinner") {
+      this.setState({
+        mealDisplay: e.target.innerText,
+        allState: false,
+        breakfastState: false,
+        lunchState: false,
+        dinnerState: true,
+        snackState: false,
+        dessertState: false,
+      });
+      console.log("Dinner");
+    }
 
-  //   if (e.target.innerText === "Snack") {
-  //     this.setState({
-  //       mealDisplay: e.target.innerText,
-  //       allState: false,
-  //       breakfastState: false,
-  //       lunchState: false,
-  //       dinnerState: false,
-  //       snackState: true,
-  //       dessertState: false,
-  //     });
-  //     console.log("Snack");
-  //   }
+    if (e.target.innerText === "Snack") {
+      this.setState({
+        mealDisplay: e.target.innerText,
+        allState: false,
+        breakfastState: false,
+        lunchState: false,
+        dinnerState: false,
+        snackState: true,
+        dessertState: false,
+      });
+      console.log("Snack");
+    }
 
-  //   if (e.target.innerText === "Dessert") {
-  //     this.setState({
-  //       mealDisplay: e.target.innerText,
-  //       allState: false,
-  //       breakfastState: false,
-  //       lunchState: false,
-  //       dinnerState: false,
-  //       snackState: false,
-  //       dessertState: true,
-  //     });
-  //     console.log("Dessert");
-  //   }
-  // };
-  // };
+    if (e.target.innerText === "Dessert") {
+      this.setState({
+        mealDisplay: e.target.innerText,
+        allState: false,
+        breakfastState: false,
+        lunchState: false,
+        dinnerState: false,
+        snackState: false,
+        dessertState: true,
+      });
+      console.log("Dessert");
+    }
+  };
 
-  // handleDelete = (deleteFood) => {
-  //   fetch("http://localhost:9292/foods/" + deleteFood.id, {
-  //     method: "DELETE",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
+  handleDelete = (deleteFood) => {
+    fetch("http://localhost:9292/foods/" + deleteFood.id, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-  //   this.setState({
-  //     foods: this.state.foods.filter((food) => food !== deleteFood),
-  //   });
-  // };
+    this.setState({
+      foods: this.state.foods.filter((food) => food !== deleteFood),
+    });
+  };
 
   handleAddFood = (e) => {
     e.preventDefault();
@@ -152,42 +148,43 @@ class App extends Component {
       });
   };
 
-  //  let filterFoods = this.state.foods.filter((food) => food.text.includes("Gar"))
-   render() {
-    
+  render() {
+    console.log(this.state.foods);
+    let filterFoods = this.state.foods?.filter(() =>
+     filterFoods.text.includes('Gar')
+    );
 
-return (
+
+    return (
       <div className="flex flex-column items-center bb b--white-20 h3 flex-shrink-0 w-75">
         <div className="app-menu flex flex-column-s center container-menu w-100 h3 justify-center ph3 nowrap">
-          {this.state.foods.map((food) => (
-            // <a
-            //   className={
-            //     this.state.allState
-            //       ? "is-active link white f5 f6-l"
-            //       : "link white f5 f6-l" || this.state.breakfastState
-            //       ? "is-active link white f5 f6-l"
-            //       : "link white f5 f6-l" || this.state.lunchState
-            //       ? "is-active link white f5 f6-l"
-            //       : "link white f5 f6-l" || this.state.dinnerState
-            //       ? "is-active link white f5 f6-l"
-            //       : "link white f5 f6-l" || this.state.snackState
-            //       ? "is-active link white f5 f6-l"
-            //       : "link white f5 f6-l" || this.state.dessertState
-            //       ? "is-active link white f5 f6-l"
-            //       : "link white f5 f6-l"
-            //   }
-            //   href="#top"
-            //   // key={i}
-            //   onClick={this.handleClick}
-            // >
-        
-            // </a>
-            
-            <p>{food.text}</p>
+          {MEALS.map((meal, i) => (
+            <a
+              className={
+                this.state.allState
+                  ? "is-active link white f5 f6-l"
+                  : "link white f5 f6-l" || this.state.breakfastState
+                  ? "is-active link white f5 f6-l"
+                  : "link white f5 f6-l" || this.state.lunchState
+                  ? "is-active link white f5 f6-l"
+                  : "link white f5 f6-l" || this.state.dinnerState
+                  ? "is-active link white f5 f6-l"
+                  : "link white f5 f6-l" || this.state.snackState
+                  ? "is-active link white f5 f6-l"
+                  : "link white f5 f6-l" || this.state.dessertState
+                  ? "is-active link white f5 f6-l"
+                  : "link white f5 f6-l"
+              }
+              href="#top"
+              key={i}
+              onClick={this.handleClick}
+            >
+              {meal}
+            </a>
           ))}
         </div>
 
-        {/* <div
+        <div
           className="content-wrapper white flex flex-column ph4 pt4 w-100"
           style={{ backgroundColor: "rgba(16 18 27 / 40%)" }}
         >
@@ -232,30 +229,29 @@ return (
             </div>
           </div>
 
-          <div className="flex flex-column mt4">
+          {/* <div className="flex flex-column mt4">
             <div className="mb4 f4" style={{ color: "#999ba5" }}>
               Your Grocery List
             </div>
             <ul
               className="f6 flex flex-column w-100 h-100 justify-around pl0 ma0 ba b--white-20 pointer br3 content-section"
               style={{ backgroundColor: "rgb(146 151 179 / 13%)" }}
-            > */}
-               {/* {filterFoods.map((food, i) => ( 
+            >
+              {filterFoods.map((food, i) => (
                 <DisplayFood
                   key={i}
                   food={food}
                   handleDelete={this.handleDelete}
                 />
-              ))} */}
-            {/* </ul>
+              ))}
+            </ul>
           </div> */}
 
-          {/* <Coupons /> */}
-        {/* </div> */}
+          <Coupons />
+        </div>
       </div>
-  );
+    );
   }
 }
-
 
 export default App;
